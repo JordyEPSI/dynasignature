@@ -1,0 +1,106 @@
+---
+// Importe le Header que l'on vient de créer
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import MobileNav from '../components/MobileNav.astro';
+import { ClientRouter } from 'astro:transitions';
+// ... les autres imports existants
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<ClientRouter />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
+		<meta name="generator" content={Astro.generator} />
+		<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+		<title>Dynasignature</title>
+	</head>
+	<body>
+		<Header />
+		
+		<main>
+			<slot />
+		</main>
+		
+		<Footer />
+
+     	<MobileNav />
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--color-bg: #F6F1E8;         /* Fond site : Ivoire doux */
+		--color-text: #1C1C1C;       /* Texte principal : Noir doux */
+		--color-section: #CBBBA0;    /* Sections secondaires : Beige sable */
+		--color-accent: #D8C3A5;     /* Accents/Boutons : Champagne doré */
+		--color-accent-dark: #5A4636;/* Texte sur doré : Brun cacao */
+	}
+
+	html, body {
+		margin: 0;
+		padding: 0;
+		width: 100%;
+		background-color: var(--color-bg);
+		color: var(--color-text);
+		/* Police par défaut pour le texte de corps */
+		font-family: 'Helvetica Neue', Arial, sans-serif;
+		-webkit-font-smoothing: antialiased;
+		scrollbar-gutter: stable;
+	}
+
+	/* La police Luxe pour tous les titres */
+	h1, h2, h3, h4 {
+		font-family: 'Playfair Display', serif;
+		font-weight: 400; /* Pas trop gras pour rester élégant */
+		color: var(--color-text);
+		margin-top: 0;
+	}
+
+	h1 { font-size: 3rem; line-height: 1.2; }
+	h2 { font-size: 2.2rem; }
+
+	/* Petite classe d'aide pour le texte subtitle */
+	.text-subtitle {
+		text-transform: uppercase;
+		letter-spacing: 0.15em;
+		font-size: 0.8rem;
+		color: var(--color-accent-dark);
+		margin-bottom: 0.5rem;
+		display: block;
+	}
+
+	/* Style pour les boutons dorés clairs */
+	.btn-primary {
+		display: inline-block;
+		background-color: var(--color-accent);
+		color: var(--color-accent-dark);
+		text-transform: uppercase;
+		letter-spacing: 0.1em;
+		font-size: 0.8rem;
+		font-weight: bold;
+		padding: 12px 24px;
+		border: none;
+		border-radius: 2px;
+		cursor: pointer;
+		text-decoration: none;
+		transition: background-color 0.3s ease;
+	}
+
+	.btn-primary:hover {
+		background-color: var(--color-section);
+	}
+
+	/* Empêche le contenu d'être caché sous la barre mobile */
+ @media (max-width: 850px) {
+     body {
+         padding-bottom: 70px; 
+         /* Si on a un iPhone avec la barre en bas, on ajoute de l'espace */
+         padding-bottom: calc(70px + env(safe-area-inset-bottom)); 
+     }
+ }
+</style>

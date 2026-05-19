@@ -1,0 +1,123 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+    <section class="gallery-header">
+        <div class="container text-center">
+            <span class="text-subtitle">PORTFOLIO</span>
+            <h1>Nos plus belles réalisations</h1>
+            <p>Découvrez les sourires, les décors et la qualité d'image de nos bornes photo lors des événements de nos clients.</p>
+        </div>
+    </section>
+
+    <section class="gallery-grid-section">
+        <div class="container">
+            <div class="masonry-grid">
+                
+                <div class="gallery-item portrait">
+                    <div class="placeholder-img">Photo Mariage</div>
+                </div>
+                
+                <div class="gallery-item landscape">
+                    <div class="placeholder-img">Photo Soirée d'Entreprise</div>
+                </div>
+                
+                <div class="gallery-item square">
+                    <div class="placeholder-img">Photo Décor</div>
+                </div>
+                
+                <div class="gallery-item portrait">
+                    <div class="placeholder-img">Photo VIP</div>
+                </div>
+                
+                <div class="gallery-item square">
+                    <div class="placeholder-img">Photo Accessoires</div>
+                </div>
+                
+                <div class="gallery-item landscape">
+                    <div class="placeholder-img">Photo de Groupe</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</Layout>
+
+<style>
+    .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+    .text-center { text-align: center; }
+
+    /* En-tête */
+    .gallery-header {
+        padding: 60px 20px 40px;
+    }
+    .gallery-header h1 {
+        margin-bottom: 15px;
+    }
+    .gallery-header p {
+        color: var(--color-muted);
+        max-width: 600px;
+        margin: 0 auto;
+        line-height: 1.6;
+    }
+
+    .gallery-grid-section {
+        padding-bottom: 80px;
+    }
+
+    /* La magie de la grille CSS */
+    .masonry-grid {
+        display: grid;
+        /* Sur mobile, on met 1 colonne. Sur grand écran, le navigateur s'adapte. */
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        grid-auto-rows: 250px; /* Hauteur de base d'une ligne */
+        gap: 20px;
+    }
+
+    .gallery-item {
+        border-radius: 4px;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(28, 28, 28, 0.05); /* Petite ombre */
+    }
+
+    /* Le fond coloré en attendant les vraies images */
+    .placeholder-img {
+        width: 100%;
+        height: 100%;
+        background-color: var(--color-section); /* Beige sable */
+        color: var(--color-text);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Playfair Display', serif;
+        font-size: 1.2rem;
+        font-style: italic;
+        opacity: 0.8;
+        transition: opacity 0.3s ease, transform 0.5s ease;
+    }
+
+    /* Effet stylé au survol de la souris */
+    .gallery-item:hover .placeholder-img {
+        opacity: 1;
+        transform: scale(1.05); /* Fait un léger zoom */
+        cursor: pointer;
+    }
+
+    /* RESPONSIVE & STYLE MOSAÏQUE 
+       Ici on dit : si l'écran est assez grand (tablette/PC), 
+       change la taille de certaines cases pour casser la monotonie.
+    */
+    @media (min-width: 768px) {
+        .portrait { 
+            grid-row: span 2; /* Prend la hauteur de 2 cases */
+        }
+        .landscape { 
+            grid-column: span 2; /* Prend la largeur de 2 cases */
+        }
+        .square { 
+            grid-row: span 1; 
+            grid-column: span 1; 
+        }
+    }
+</style>

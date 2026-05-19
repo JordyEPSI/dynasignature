@@ -1,0 +1,183 @@
+---
+// Le Frontmatter de notre composant Footer
+const anneeActuelle = new Date().getFullYear();
+---
+
+<footer class="main-footer">
+    <div class="footer-container">
+        
+        <div class="footer-col brand-col">
+            <div class="logo">
+                <a href="/">
+                    <img src="/logo.png" alt="Dynasignature Logo" style="height: 80px; width: auto;" />
+                </a>
+            </div>
+            <p class="brand-desc">
+                Chez Dynasignature, chaque détail compte. Nous mettons notre passion et notre créativité au service de vos plus beaux moments.
+            </p>
+        </div>
+
+        <div class="footer-col">
+            <h4>NAVIGATION</h4>
+            <ul>
+                <li><a href="/">Accueil</a></li>
+                <li><a href="#">Nos services</a></li>
+                <li><a href="#">À propos</a></li>
+                <li><a href="#">Galerie</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>SERVICES</h4>
+            <ul>
+                <li><a href="#">Photobooth</a></li>
+                <li><a href="#">Video Booth</a></li>
+                <li><a href="#">Magazine Box</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>SUIVEZ-NOUS</h4>
+            <div class="social-links">
+                <a href="#" aria-label="Instagram">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+                </a>
+                <a href="#" aria-label="Facebook">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0H1.325C.593 0 0 .593 0 1.325v21.351C0 23.407.593 24 1.325 24H12.82v-9.294H9.692v-3.622h3.128V8.413c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12V24h6.116c.73 0 1.323-.593 1.323-1.325V1.325C24 .593 23.407 0 22.675 0z"/></svg>
+                </a>
+                <a href="#" aria-label="TikTok">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93v7.2c0 1.96-.5 3.96-1.72 5.39-1.16 1.38-2.95 2.15-4.78 2.18-2.33.03-4.71-.95-6.04-2.82-1.36-1.89-1.4-4.52-.3-6.49 1.05-1.92 3.16-3.1 5.34-3.15v4.02c-1.23.06-2.52.79-2.98 1.98-.37.98-.22 2.16.42 2.97.64.83 1.78 1.14 2.8 1.02 1.37-.15 2.5-1.37 2.65-2.76.08-2.61.03-5.23.05-7.85v-9.61z"/></svg>
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>&copy; {anneeActuelle} Dynasignature – Tous droits réservés.</p>
+    </div>
+</footer>
+
+<style>
+    .main-footer {
+        background-color: var(--color-bg);
+        border-top: 1px solid rgba(28, 28, 28, 0.05); /* Ligne discrète pour séparer */
+        padding-top: 60px;
+    }
+
+    .footer-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: grid;
+        grid-template-columns: 2fr 1fr 1fr 1fr; /* La 1ère colonne est plus large */
+        gap: 40px;
+    }
+
+    /* Style du logo texte (le même que le Header) */
+    .logo {
+        display: flex;
+        flex-direction: column;
+        line-height: 1;
+        margin-bottom: 20px;
+    }
+    .logo-text {
+        font-family: 'Playfair Display', serif;
+        font-size: 2rem;
+        letter-spacing: 0.2em;
+        color: var(--color-text);
+    }
+    .logo-subtext {
+        font-size: 0.6rem;
+        letter-spacing: 0.4em;
+        color: #5A4636;
+        margin-top: 4px;
+    }
+
+    .brand-desc {
+        font-size: 0.8rem;
+        line-height: 1.6;
+        color: #5A4636;
+        max-width: 250px;
+    }
+
+    /* Titres des colonnes */
+    h4 {
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--color-text);
+        margin-bottom: 20px;
+    }
+
+    /* Listes de liens */
+    ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+    li {
+        margin-bottom: 10px;
+    }
+    a {
+        text-decoration: none;
+        color: #5A4636;
+        font-size: 0.8rem;
+        transition: color 0.3s ease;
+    }
+    a:hover {
+        color: var(--color-text);
+        font-weight: bold;
+    }
+
+    /* Réseaux sociaux avec logos */
+    .social-links {
+        display: flex;
+        gap: 15px;
+    }
+    .social-links a {
+        color: var(--color-text); /* Noir doux par défaut */
+        display: inline-flex; /* Aligne bien le SVG */
+        transition: transform 0.3s ease, color 0.3s ease;
+    }
+    .social-links a:hover {
+        color: var(--color-accent-dark); /* Passe au brun clair au survol */
+        transform: translateY(-3px) scale(1.1); /* Remonte un peu et grossit */
+    }
+
+    /* Copyright */
+    .footer-bottom {
+        text-align: center;
+        padding: 30px 20px;
+        margin-top: 40px;
+        border-top: 1px solid rgba(28, 28, 28, 0.05);
+        font-size: 0.7rem;
+        color: #5A4636;
+    }
+
+    /* RESPONSIVE FOOTER */
+    @media (max-width: 900px) {
+        /* Sur tablette : on fait 2 colonnes */
+        .footer-container {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+    @media (max-width: 600px) {
+        /* Sur mobile : 1 seule colonne et on centre le texte */
+        .footer-container {
+            grid-template-columns: 1fr;
+            text-align: center;
+        }
+        .logo {
+            align-items: center; /* Centre le logo */
+        }
+        .brand-desc {
+            margin: 0 auto; /* Centre le paragraphe */
+        }
+        .social-links {
+            justify-content: center; /* Centre les icônes */
+        }
+    }
+</style>

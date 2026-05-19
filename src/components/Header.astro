@@ -1,0 +1,126 @@
+---
+---
+
+<header class="main-header">
+    <div class="header-container">
+        <div class="logo">
+            <a href="/" class="logo-link">
+                <img src="/logo.png" alt="Dynasignature Logo" class="logo-img" />
+            </a>
+        </div>
+
+        <nav class="nav-links">
+            <ul>
+                <li><a href="/">ACCUEIL</a></li>
+                <li><a href="/galerie">GALERIE</a></li>
+                <li><a href="/contact">CONTACT</a></li>
+            </ul>
+        </nav>
+
+        <div class="header-action">
+            <a href="/reservation" class="btn-reserver">RÉSERVER</a>
+        </div>
+    </div>
+</header>
+
+<style>
+    /* --- STRUCTURE DU HEADER --- */
+    .main-header {
+        background-color: var(--color-bg);
+        border-bottom: 1px solid rgba(28, 28, 28, 0.05);
+        position: sticky;
+        top: 0;
+        z-index: 1000; /* Très haut pour passer devant tout */
+        width: 100%;
+        /* On force une hauteur minimale pour le header pour qu'il soit stable */
+        min-height: 120px; 
+        display: flex;
+        align-items: center;
+    }
+
+    .header-container {
+        max-width: 1300px;
+        margin: 0 auto;
+        padding: 10px 20px;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    /* --- LOGO (La star) --- */
+    .logo-link {
+        display: block;
+        text-decoration: none;
+    }
+
+    .logo-img {
+        /* On impose une taille fixe qui ne peut pas être écrasée */
+        height: 110px !important; 
+        width: auto !important;
+        display: block;
+        transition: transform 0.3s ease;
+    }
+
+    .logo-img:hover {
+        transform: scale(1.03);
+    }
+
+    /* --- NAVIGATION --- */
+    .nav-links ul {
+        display: flex;
+        list-style: none;
+        gap: 40px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .nav-links a {
+        font-size: 0.8rem;
+        font-weight: bold;
+        letter-spacing: 0.15em;
+        color: var(--color-text);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+        color: var(--color-accent);
+    }
+
+    /* --- BOUTON DORÉ --- */
+    .btn-reserver {
+        display: inline-block;
+        background-color: var(--color-accent);
+        color: var(--color-text);
+        padding: 12px 25px;
+        font-size: 0.8rem;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+        text-decoration: none;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .btn-reserver:hover {
+        background-color: var(--color-text);
+        color: #FFFFFF;
+    }
+
+    /* --- RESPONSIVE --- */
+    @media (max-width: 850px) {
+        .main-header {
+            min-height: auto; /* On laisse le mobile gérer sa hauteur */
+        }
+        .header-container {
+            flex-direction: column;
+            padding: 15px;
+        }
+        .nav-links, .header-action {
+            display: none; /* Cache sur mobile (barre du bas) */
+        }
+        .logo-img {
+            height: 90px !important; /* Un peu plus petit sur mobile */
+        }
+    }
+</style>

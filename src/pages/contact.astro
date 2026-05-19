@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+    <section class="contact-section">
+        <div class="container">
+            
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="text-subtitle">RESTONS EN CONTACT</span>
+                    <h1>Une question ? <br>Un projet sur-mesure ?</h1>
+                    <p>N'hésitez pas à nous écrire. Nous vous répondrons dans les plus brefs délais pour sublimer votre événement.</p>
+                    
+                    <div class="info-blocks">
+                        <div class="info-item">
+                            <h4>Email</h4>
+                            <a href="mailto:contact@dynasignature.com">contact@dynasignature.com</a>
+                        </div>
+                        <div class="info-item">
+                            <h4>Téléphone</h4>
+                            <a href="tel:+33600000000">06 00 00 00 00</a>
+                        </div>
+                        <div class="info-item">
+                            <h4>Zone de déplacement</h4>
+                            <p>Montpellier & toute l'Occitanie</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-wrapper">
+                    <form id="form" class="luxe-form">
+                        
+                        <input type="hidden" name="access_key" value="1def94b2-463e-4897-9dc4-64fa91aedc97">
+
+                        <div class="form-group">
+                            <label for="name">Nom & Prénom</label>
+                            <input type="text" id="name" name="name" required placeholder="Ex: Jean Dupont">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Adresse E-mail</label>
+                            <input type="email" id="email" name="email" required placeholder="Ex: jean@email.com">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="date">Date de l'événement (Optionnel)</label>
+                            <input type="date" id="date" name="date">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Votre message</label>
+                            <textarea id="message" name="message" rows="4" required placeholder="Parlez-nous de votre événement..."></textarea>
+                        </div>
+
+                        <button type="submit" id="btn-submit" class="btn-primary" style="width: 100%;">ENVOYER LE MESSAGE</button>
+                        
+                        <div id="result" class="form-result"></div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</Layout>
+
+<script is:inline>
+    const form = document.getElementById('form');
+    const result = document.getElementById('result');
+    const btnSubmit = document.getElementById('btn-submit');
+
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        btnSubmit.textContent = "ENVOI EN COURS...";
+        btnSubmit.disabled = true;
+        
+        const formData = new FormData(form);
+        const object = Object.fromEntries(formData);
+        const json = JSON.stringify(object);
+
+        result.innerHTML = "";
+        result.className = "form-result text-sending";
+
+        fetch('https://api.web3forms.com/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: json
+        })
+        .then(async (response) => {
+            let res = await response.json();
+            if (response.status == 200) {
+                result.className = "form-result text-success";
+                result.innerHTML = "Votre message a bien été envoyé !";
+                form.reset();
+            } else {
+                console.log(response);
+                result.className = "form-result text-error";
+                result.innerHTML = res.message;
+            }
+        })
+        .catch(error => {
+            console.log(error);
+            result.className = "form-result text-error";
+            result.innerHTML = "Une erreur est survenue. Veuillez réessayer.";
+        })
+        .then(() => {
+            btnSubmit.textContent = "ENVOYER LE MESSAGE";
+            btnSubmit.disabled = false;
+        });
+    });
+</script>
+
+<style>
+    .contact-section { padding: 80px 20px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: start; }
+    
+    .contact-info h1 { font-size: 2.5rem; margin: 15px 0 25px; }
+    .contact-info p { color: var(--color-muted); line-height: 1.6; margin-bottom: 40px; }
+    .info-blocks { display: flex; flex-direction: column; gap: 25px; }
+    .info-item h4 { color: var(--color-accent-dark); font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 5px; }
+    .info-item a, .info-item p { color: var(--color-text); text-decoration: none; font-weight: bold; font-size: 1.1rem; transition: color 0.3s ease; }
+    .info-item a:hover { color: var(--color-accent); }
+
+    .contact-form-wrapper { background-color: #FFFFFF; padding: 40px; border-radius: 4px; box-shadow: 0 10px 30px rgba(28, 28, 28, 0.05); }
+    .form-group { margin-bottom: 25px; display: flex; flex-direction: column; }
+    .form-group label { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-muted); margin-bottom: 8px; }
+
+    .luxe-form input, .luxe-form textarea { background: transparent; border: none; border-bottom: 1px solid rgba(90, 70, 54, 0.2); padding: 10px 0; font-size: 1rem; font-family: inherit; color: var(--color-text); transition: border-color 0.3s ease; resize: vertical; }
+    .luxe-form input:focus, .luxe-form textarea:focus { outline: none; border-bottom-color: var(--color-accent-dark); }
+    .luxe-form input::placeholder, .luxe-form textarea::placeholder { color: rgba(90, 70, 54, 0.4); font-style: italic; }
+
+    /* Styles pour le message de retour en bas du formulaire */
+    .form-result { margin-top: 20px; font-size: 0.9rem; font-weight: bold; text-align: center; padding: 10px; border-radius: 2px; }
+    .text-success { color: #2e7d32; background-color: #e8f5e9; }
+    .text-error { color: #c62828; background-color: #ffebee; }
+    .text-sending { color: var(--color-muted); }
+
+    @media (max-width: 850px) {
+        .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+        .contact-form-wrapper { padding: 25px 20px; }
+    }
+</style>

@@ -1,0 +1,77 @@
+---
+---
+
+<nav class="mobile-nav">
+    <a href="/" class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span>Accueil</span>
+    </a>
+    <a href="/reservation" class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM9 14H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2zm-8 4H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg>
+        <span>Réserver</span>
+    </a>
+    <a href="/galerie" class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+        <span>Galerie</span>
+    </a>
+    <a href="/contact" class="nav-item">
+        <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+        <span>Contact</span>
+    </a>
+</nav>
+
+<style>
+    /* Par défaut (sur ordi), on cache cette barre */
+    .mobile-nav {
+        display: none;
+    }
+
+    /* Uniquement sur mobile et petite tablette */
+    @media (max-width: 850px) {
+        .mobile-nav {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            position: fixed; /* Reste bloqué en bas */
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background-color: var(--color-bg);
+            border-top: 1px solid rgba(28, 28, 28, 0.1);
+            z-index: 9999; /* Toujours par-dessus le reste */
+            /* Petite astuce pro : padding pour éviter la barre noire des iPhone modernes */
+            padding-bottom: env(safe-area-inset-bottom); 
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.05); /* Légère ombre chic */
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 12px 0 8px 0;
+            color: var(--color-muted); /* Brun cacao par défaut */
+            text-decoration: none;
+            flex: 1;
+            transition: color 0.3s ease;
+        }
+
+        .nav-item svg {
+            width: 22px;
+            height: 22px;
+            fill: currentColor;
+            margin-bottom: 4px;
+        }
+
+        .nav-item span {
+            font-size: 0.6rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Quand on est sur la page (actif) ou au survol */
+        .nav-item.active, .nav-item:hover {
+            color: var(--color-text); /* Devient Noir doux */
+        }
+    }
+</style>
