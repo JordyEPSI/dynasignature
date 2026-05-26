@@ -15,13 +15,13 @@ import Layout from '../layouts/Layout.astro';
         <div class="container">
             <div class="booking-box">
                 
-                <div class="calendly-inline-widget" data-url="https://calendly.com" style="min-width:320px;height:700px;">
+                <div class="fotostudio-widget" style="width:100%; height:850px;">
                     <iframe 
-                        src="https://calendly.com/fr" 
+                        src="https://www.fotostudio.io/client/res/foto28959" 
                         width="100%" 
                         height="100%" 
                         frameborder="0" 
-                        title="Calendrier de réservation">
+                        title="Calendrier de réservation Fotostudio">
                     </iframe>
                 </div>
 
@@ -50,8 +50,19 @@ import Layout from '../layouts/Layout.astro';
     .reservation-header {
         padding: 60px 20px 40px;
     }
+    .text-subtitle {
+		font-size: 0.8rem;
+		font-weight: bold;
+		letter-spacing: 0.15em;
+		color: var(--color-accent);
+		text-transform: uppercase;
+		display: block;
+		margin-bottom: 10px;
+	}
     .reservation-header h1 {
         margin-bottom: 15px;
+        font-family: 'Playfair Display', serif;
+		font-size: 2.5rem;
     }
     .reservation-header p {
         color: var(--color-muted);
@@ -94,11 +105,21 @@ import Layout from '../layouts/Layout.astro';
     }
 
     /* Responsive */
+    @media (max-width: 768px) {
+        .reservation-header h1 {
+			font-size: 2rem;
+		}
+    }
+    
     @media (max-width: 600px) {
         .reassurance {
             flex-direction: column;
             align-items: center;
             gap: 15px;
+        }
+        .booking-box {
+            border: none;
+            box-shadow: none;
         }
     }
 </style>

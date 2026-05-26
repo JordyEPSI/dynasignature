@@ -49,7 +49,8 @@ import Layout from '../layouts/Layout.astro';
 			</div>
 
 			<div class="pricing-grid">
-				<div class="price-card essentiel">
+				
+				<div class="price-card">
 					<div class="card-header">
 						<h3>Pack ESSENTIEL</h3>
 						<div class="price">à partir de <span>299€</span></div>
@@ -93,6 +94,28 @@ import Layout from '../layouts/Layout.astro';
 					</div>
 					<a href="/reservation" class="btn-card btn-card-premium">RÉSERVER LE PREMIUM</a>
 				</div>
+
+				<div class="price-card">
+					<div class="card-header">
+						<h3>Pack PRESTIGE</h3>
+						<div class="price">à partir de <span>899€</span></div>
+						<p class="subtitle">Une prestation VIP sur-mesure.</p>
+					</div>
+					<ul class="features-list">
+						<li><strong>Jusqu'à 6h de prestation</strong></li>
+						<li>Mise en scène et fond personnalisé</li>
+						<li><strong>Équipe dédiée</strong> (Accueil et technique)</li>
+						<li>Effets spéciaux (Fumée lourde, étincelles...)</li>
+						<li>Habillage 100% à vos couleurs</li>
+						<li>Montage vidéo express pour réseaux</li>
+						<li>Déplacement Île-de-France inclus</li>
+					</ul>
+					<div class="ideal-for">
+						<strong>Idéal pour :</strong> Mariages luxe, Marques, Festivals, Événements VIP.
+					</div>
+					<a href="/contact" class="btn-card">DEMANDER UN DEVIS</a>
+				</div>
+
 			</div>
 		</div>
 	</section>
@@ -140,21 +163,21 @@ import Layout from '../layouts/Layout.astro';
 
 	/* TARIFS / PACKS */
 	.pricing-section { padding: 80px 20px; background-color: var(--color-bg); }
-	.pricing-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 40px; max-width: 900px; margin: 0 auto; align-items: start; }
+	.pricing-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1100px; margin: 0 auto; align-items: start; }
 	
 	.price-card { background: #FFFFFF; border: 1px solid rgba(203, 187, 160, 0.3); padding: 40px; border-radius: 8px; position: relative; box-shadow: 0 4px 20px rgba(0,0,0,0.02); display: flex; flex-direction: column; }
 	
 	/* Style spécifique pour le Pack Premium (VIP) */
-	.price-card.premium { background: var(--color-text); /* Noir doux */ border: 1px solid var(--color-accent); color: var(--color-bg); transform: scale(1.03); /* Légèrement plus grand */ box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
+	.price-card.premium { background: var(--color-text); border: 1px solid var(--color-accent); color: var(--color-bg); transform: scale(1.03); box-shadow: 0 10px 30px rgba(0,0,0,0.15); }
 	
-	.badge-popular { position: absolute; top: -15px; right: 30px; background: var(--color-accent); color: var(--color-text); font-size: 0.65rem; font-weight: bold; letter-spacing: 0.1em; padding: 6px 12px; border-radius: 20px; }
+	.badge-popular { position: absolute; top: -15px; left: 50%; transform: translateX(-50%); background: var(--color-accent); color: var(--color-text); font-size: 0.65rem; font-weight: bold; letter-spacing: 0.1em; padding: 6px 15px; border-radius: 20px; white-space: nowrap; }
 
-	.card-header h3 { margin-bottom: 10px; font-size: 1.8rem; }
-	.premium .card-header h3 { color: var(--color-accent); } /* Titre doré pour le premium */
+	.card-header h3 { margin-bottom: 10px; font-size: 1.8rem; font-weight: normal; font-family: 'Playfair Display', serif; }
+	.premium .card-header h3 { color: var(--color-accent); } 
 	
 	.price { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--color-muted); margin-bottom: 5px; }
 	.premium .price { color: var(--color-section); }
-	.price span { font-size: 2.5rem; font-weight: bold; color: var(--color-text); }
+	.price span { font-size: 2.8rem; font-weight: bold; color: var(--color-text); }
 	.premium .price span { color: #FFFFFF; }
 	
 	.subtitle { font-size: 0.85rem; font-style: italic; color: var(--color-muted); margin-bottom: 30px; }
@@ -162,7 +185,7 @@ import Layout from '../layouts/Layout.astro';
 
 	.features-list { list-style: none; padding: 0; margin: 0 0 30px 0; border-top: 1px solid rgba(90, 70, 54, 0.1); }
 	.premium .features-list { border-top-color: rgba(255,255,255,0.1); }
-	.features-list li { padding: 12px 0; border-bottom: 1px solid rgba(90, 70, 54, 0.1); font-size: 0.9rem; }
+	.features-list li { padding: 12px 0; border-bottom: 1px solid rgba(90, 70, 54, 0.1); font-size: 0.9rem; line-height: 1.4; }
 	.premium .features-list li { border-bottom-color: rgba(255,255,255,0.1); }
 	
 	.ideal-for { font-size: 0.8rem; border-top: 1px solid rgba(90, 70, 54, 0.1); padding-top: 15px; margin-bottom: 30px; line-height: 1.4; color: var(--color-muted); }
@@ -181,11 +204,11 @@ import Layout from '../layouts/Layout.astro';
 	.engagements-grid p { font-size: 0.8rem; color: #CBBBA0; }
 
 	/* --- MEDIA QUERIES (TABLETTE & MOBILE) --- */
-	@media (max-width: 900px) {
+	@media (max-width: 950px) {
+		.pricing-grid { grid-template-columns: 1fr; gap: 50px; max-width: 450px; }
+		.price-card.premium { transform: scale(1); }
 		.services-grid { grid-template-columns: repeat(2, 1fr); }
 		.engagements-grid { grid-template-columns: repeat(2, 1fr); }
-		.pricing-grid { grid-template-columns: 1fr; gap: 50px; max-width: 500px; }
-		.price-card.premium { transform: scale(1); } /* Enlève le zoom sur mobile pour éviter les bugs */
 	}
 
 	@media (max-width: 768px) {
